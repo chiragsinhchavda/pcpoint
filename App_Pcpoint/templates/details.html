@@ -1,0 +1,68 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{product.productname}}</title>
+	<style>
+		.fs-40 {
+			font-size: 40px;
+		}
+
+		body::-webkit-scrollbar {
+			display: none;
+		}
+	</style>
+</head>
+
+<body class="main-layout">
+	<br>
+	<br>
+	<div id="contact" class="request">
+		<div class="container">
+			{% if message %}
+			<h2 class="d-flex justify-content-center text-dark bg-light">{{message}}</h2>
+			{% endif %}
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col-md-6">
+					<div class="card">
+						<img src="{{product.file.url}}" class="card-img-top" alt="...">
+					</div>
+					</a>
+				</div>
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-body">
+							<h3 class="card-title">{{product.productname}}</h3>
+							<h4>₹ {{product.price}}</h4>
+							<p><b>{{product.description}}</b></p>
+							<h5>Available offers :-</h5>
+							<h6>-Special PriceGet extra 10% off (price inclusive of discount) <a href="#" style="color: blue;">T&C</a> <br>
+								-Bank Offer5% Unlimited Cashback on Flipkart Axis Bank Credit Card <a href="#" style="color: blue;">T&C</a>
+								<br>
+								-Partner OfferSign up for Flipkart Pay Later and get Flipkart Gift Card worth ₹100* <a
+									href="#" style="color: blue;">Know More</a>
+							</h6>
+							{% if request.session.email %}
+							<a href="{% url 'addToWishlists' pk=product.pk %}"><input type="button" value="WISHLIST" class="btn btn-secondary"></a>
+							<a href="{% url 'addToCarts' pk=product.pk %}"><input type="button" value="CART" class="btn btn-secondary"></a>
+							<a href=""><input type="button" value="BUY" class="btn btn-dark"></a>
+							{% else %}
+							<a href="{% url 'signIn' %}"><input type="button" value="Sign in" class="btn btn-info"></a>
+							{% endif %}
+						</div>
+					</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+{% endblock %}

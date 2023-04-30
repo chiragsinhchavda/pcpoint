@@ -1,0 +1,87 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edit Product</title>
+	<style>
+		.fs-40 {
+			font-size: 40px;
+		}
+
+		body::-webkit-scrollbar {
+			display: none;
+		}
+
+		.nice-select {
+			display: none;
+		}
+	</style>
+</head>
+
+<body class="main-layout">
+	<br>
+	<br>
+	<div id="contact" class="request">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="card">
+									<img src="{{product.file.url}}" class="card-img-top" alt="...">
+								</div>
+								</a>
+							</div>
+							<div class="col-md-6 border">
+								<form class="main_form" action='{% url "editproduct" pk=product.pk %}' method="post"
+									enctype="multipart/form-data">
+									{% csrf_token %}
+									<h1 class="d-flex justify-content-center text-dark fs-40">Edit Product</h1>
+									<br>
+									{% if message %}
+									<h2 class="d-flex justify-content-center align-items-center text-light bg-dark">
+										{{message}}</h2>
+									{% endif %}
+									<br>
+									<div class="form-group">
+										<input class="form-control" value="{{product.producttype}}" type="text"
+											name="producttype" readonly>
+									</div>
+									<div class="form-group">
+										<input class="form-control" value="{{product.productname}}" type="text"
+											name="productname">
+									</div>
+									<div class="form-group">
+										<input class="form-control" value="{{product.price}}" type="text" name="price">
+									</div>
+									<div class="form-group">
+										<textarea class="form-control" type="text"
+											name="description">{{product.description}}</textarea>
+									</div>
+									<div class="form-group">
+										<input class="form-control" type="file" name="file">
+									</div>
+									<div class="form-group">
+										<button class="send_btn">Edit Product</button>
+									</div>
+								</form>
+
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+{% endblock %}

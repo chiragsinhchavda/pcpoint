@@ -1,0 +1,59 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Our Products</title>
+	<style>
+		.fs-40 {
+			font-size: 40px;
+		}
+
+		body::-webkit-scrollbar {
+			display: none;
+		}
+	</style>
+</head>
+
+<body class="main-layout">
+	<div id="contact" class="request">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="titlepage">
+						<br>
+						<br>
+						<h2>Our Products</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				{% for i in products %}
+				<div class="col">
+					{% if request.session.email %}
+					<a href="{% url 'details' pk=i.pk %}">
+					{% else %}
+					<a href="{% url 'signIn' %}">
+					{% endif %}
+						<div class="card">
+							<img src="{{i.file.url}}" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h3 class="card-title">{{i.productname}}</h3>
+								<h5>₹ {{i.price}}</h5>
+							</div>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+{% endblock %}

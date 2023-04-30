@@ -1,0 +1,109 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign Up</title>
+	<style>
+		body::-webkit-scrollbar {
+			display: none;
+		}
+
+		.fs-40 {
+			font-size: 40px;
+		}
+
+		a {
+			text-decoration: aliceblue;
+			color: white;
+		}
+
+		a:hover {
+			color: white;
+		}
+
+		.nice-select{
+			display: none;
+		}
+	</style>
+</head>
+
+<body class="main-layout">
+	<div id="contact" class="request">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="titlepage">
+						<br>
+						<br>
+						<h2>Sign Up</h2>
+						<span>Pcoint ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br>
+							incididunt ut labore et dolore magna</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="black_bg">
+						<div class="row">
+							<div class="col-md-7 ">
+								<form class="main_form" action='{% url "signUp" %}' method="post">
+									{% csrf_token %}
+									<h1 class="d-flex justify-content-center text-white fs-40">Sign Up</h1>
+									<br>
+									{% if message %}
+									<h2 class="d-flex justify-content-center text-dark bg-light">{{message}}</h2>
+									{% endif %}
+									<br>
+									<div class="row">
+										<div class="form-group col-md-12">
+											<select class="custom-select mr-sm-2" name="usertype" id="inlineFormCustomSelect">
+												<option selected>Select User-type...</option>
+												<option value="customer">Customer</option>
+												<option value="seller">Seller</option>
+											  </select>
+										</div>
+										<div class="col-md-12 ">
+											<input class="contactus" placeholder="Name" type="text" name="name">
+										</div>
+										<div class="col-md-12">
+											<input class="contactus" placeholder="Phone number" type="text"
+												name="phonenumber">
+										</div>
+										<div class="col-md-12">
+											<input class="contactus" placeholder="Email" type="text" name="email">
+										</div>
+										<div class="col-md-12">
+											<input class="contactus" placeholder="Password" type="password"
+												name="password">
+										</div>
+										<div class="col-md-12">
+											<input class="contactus" placeholder="Confirm Password" type="text"
+												name="cpassword">
+										</div>
+										<div class="col-sm-12">
+											<button class="send_btn">Sign up</button>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="col-md-5">
+								<div class="mane_img">
+									<figure><img src='{% static "images/contact-page.jpg" %}' alt="#" /></figure>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+{% endblock %}

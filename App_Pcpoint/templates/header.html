@@ -1,0 +1,228 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}' />
+    <link rel="stylesheet" href='{% static "css/style.css" %}' />
+    <link rel="stylesheet" href='{% static "css/responsive.css" %}' />
+    <link
+      rel="icon"
+      href='{% static "images/favicon.ico" %}'
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href='{% static "css/jquery.mCustomScrollbar.min.css" %}'
+    />
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <style>
+      .footer {
+        border-top: none;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+      }
+
+      body {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      /*.logo a {
+	cursor: pointer;
+     font-size: 40px;
+     font-weight: bold;
+     text-transform: uppercase;
+     color: #fff;
+     line-height: 40px;
+}*/
+      .logo h1 {
+        color: #3051d3;
+      }
+      .sign_btn a:hover {
+        color: #3051d3;
+      }
+      .navmenubgcolor {
+        margin-left: 10px;
+      }
+
+      .sign_btn a {
+        padding: 7px 16px;
+      }
+
+      .relativeposition {
+        position: relative;
+        left: 60px;
+      }
+    </style>
+    <script type="text/javascript">
+      window.history.forward();
+      function noBack() {
+        window.history.forward();
+      }
+      if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+      }
+    </script>
+  </head>
+
+  <body class="main-layout">
+    <header>
+      <div class="head_top">
+        <div class="header green">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                <div class="full">
+                  <div class="center-desk">
+                    <div class="logo">
+                      <!--<a href="/"><img src='{% static "images/logo.png" %}' alt="#" /></a>-->
+                      <a href="/"><h1>PCPoint</h1></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                <nav class="navigation navbar navbar-expand-md navbar-dark">
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarsExample04"
+                    aria-controls="navbarsExample04"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarsExample04">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="sign_btn navmenubgcolor">
+                        <a href="/"> Home </a>
+                      </li>
+                      {% if request.session.usertype == "seller" %}
+                      <li class="sign_btn navmenubgcolor">
+                        <a href='{% url "addproduct" %}'>Add Product</a>
+                      </li>
+                      <li class="sign_btn navmenubgcolor">
+                        <a href='{% url "viewproducts" %}'>View Products</a>
+                      </li>
+                      {% else %}
+                      <li class="sign_btn navmenubgcolor">
+                        <a href='{% url "products" %}'>Products</a>
+                      </li>
+                      <li class="sign_btn navmenubgcolor">
+                        <a href='{% url "contact" %}'>Contact us</a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                    {% if request.session.email %}
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-secondary dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        My Account
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        {% if request.session.usertype == "customer" %}
+                        <li>
+                          <a class="dropdown-item" href='{% url "myorders" %}'
+                            >My Orders</a
+                          >
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href='{% url "wishlists" %}'
+                            >Wishlists {% if request.session.wishlists_count != 0 %}
+							({{request.session.wishlists_count}}) {% endif %}
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href='{% url "carts" %}'
+                            >Carts {% if request.session.carts_count != 0 %}
+                            ({{request.session.carts_count}}) {% endif %}
+                          </a>
+                        </li>
+                        {% endif %}
+                        <li>
+                          <a
+                            class="dropdown-item"
+                            href="{% url 'changepassword' %}"
+                            >Change Password</a
+                          >
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="{% url 'logout' %}"
+                            >Logout</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    {% else %}
+                    <div class="sign_btn">
+                      <a href='{% url "signIn" %}'>Sign in</a>
+                    </div>
+                    {% endif %}
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    {% block content %} {% endblock %}
+    <footer>
+      <div class="footer">
+        <div class="copyright">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <p>
+                  © 2023 All Rights Reserved. Design by <a href="/">Chirag</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src='{% static "js/jquery.min.js" %}'></script>
+    <script src='{% static "js/popper.min.js" %}'></script>
+    <script src='{% static "js/bootstrap.bundle.min.js" %}'></script>
+    <script src='{% static "js/jquery-3.0.0.min.js" %}'></script>
+    <script src='{% static "js/plugin.js" %}'></script>
+    <script src='{% static "js/jquery.mCustomScrollbar.concat.min.js" %}'></script>
+    <script src='{% static "js/custom.js" %}'></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

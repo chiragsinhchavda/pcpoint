@@ -1,0 +1,30 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+	path('', views.index, name="index" ),
+	path('contact/', views.contact, name="contact"),
+	path('signIn/', views.signIn, name="signIn"),
+	path('signUp/', views.signUp, name="signUp"),
+	path('forgotPassword/', views.forgotPassword, name="forgotPassword"),
+	path('logout/', views.logout, name="logout"),
+	path('changepassword/', views.changepassword, name="changepassword"),
+	path('verifyotp/', views.verifyotp, name="verifyotp"),
+	path('newpassword/',views.newpassword, name="newpassword"),
+	path('addproduct/', views.addproduct, name="addproduct"),
+	path('viewproducts/', views.viewproducts, name="viewproducts"),
+	path('editproduct/<int:pk>', views.editproduct, name="editproduct"),
+	path('deleteproduct/<int:pk>', views.deleteproduct, name="deleteproduct"),
+	path('products/',views.products,name="products"),
+	path('details/<int:pk>',views.details,name="details"),
+	path('addToWishlists/<int:pk>',views.addToWishlists, name="addToWishlists"),
+	path('addToCarts/<int:pk>',views.addToCarts, name="addToCarts"),
+	path('wishlists/',views.wishlists,name="wishlists"),
+	path('carts/',views.carts,name="carts"),
+	path('remove/<int:pk>',views.remove,name="remove"),
+	path('removeFromCart/<int:pk>',views.removeFromCart,name="removeFromCart"),
+	path('changeQty/',views.changeQty,name="changeQty"),
+	path('pay/', views.initiate_payment, name='pay'),
+	path('callback/', views.callback, name='callback'),
+	path('myorders/', views.myorders, name='myorders'),
+]

@@ -1,0 +1,73 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Wishlists</title>
+	<style>
+		.fs-40 {
+			font-size: 40px;
+		}
+
+		body::-webkit-scrollbar {
+			display: none;
+		}
+	</style>
+</head>
+
+<body class="main-layout">
+	<div id="contact" class="request">
+		<div class="container">
+			{% if message %}
+			<h2 class="d-flex justify-content-center text-dark bg-light">{{message}}</h2>
+			{% endif %}
+			<div class="row">
+				<div class="col-md-12">
+					<div class="titlepage">
+						<br>
+						<br>
+						<h2>Wishlists</h2>
+						{% if message %}
+						<h4 class="d-flex justify-content-center text-dark bg-light">{{message}}</h4>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				{% if wishlists %}
+				{% for i in wishlists %}
+				<div class="col">
+					<div class="card">
+						<img src="{{i.product.file.url}}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h3 class="card-title">{{i.product.productname}}</h3>
+							<h5>₹ {{i.product.price}}</h5>
+							<p>{{i.product.description}}</p>
+							{% if request.session.email %}
+							<a href=""><input type="button" value="BUY" class="btn btn-dark"></a>
+							<a href="{% url 'addToCarts' pk=i.product.pk %}"><input type="button" value="CART" class="btn btn-secondary"></a>
+							<a href="{% url 'remove' pk=i.product.pk %}"><input type="button" value="REMOVE" class="btn btn-secondary"></a>
+							{% else %}
+							<a href="{% url 'signIn' %}"><input type="button" value="Sign in" class="btn btn-info"></a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				{% else %}
+				<div class="col d-flex justify-content-center align-items-center">
+					<h3>No Products Wishlisted.</h3>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+{% endblock %}

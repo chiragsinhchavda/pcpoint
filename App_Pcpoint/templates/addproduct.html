@@ -1,0 +1,122 @@
+{% extends 'header.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Product</title>
+    <style>
+      .fs-40 {
+        font-size: 40px;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      .nice-select {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body class="main-layout">
+    <div id="contact" class="request">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="titlepage">
+              <br />
+              <br />
+              <h2>Add Product</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="black_bg">
+              <div class="row">
+                <div class="col-md-7">
+                  <form
+                    class="main_form"
+                    action='{% url "addproduct" %}'
+                    method="post"
+                    enctype="multipart/form-data"
+                  >
+                    {% csrf_token %}
+                    <h1 class="d-flex justify-content-center text-white fs-40">
+                      Add Product
+                    </h1>
+                    <br />
+                    {% if message %}
+                    <h2
+                      class="d-flex justify-content-center align-items-center text-dark bg-light"
+                    >
+                      {{message}}
+                    </h2>
+                    {% endif %}
+                    <br />
+                    <div class="row">
+                      <div class="form-group col-md-12">
+                        <select
+                          class="custom-select mr-sm-2"
+                          name="producttype"
+                          id="inlineFormCustomSelect"
+                        >
+                          <option selected>Select Type</option>
+                          <option value="laptop">Laptop</option>
+                          <option value="computer">Computer</option>
+                        </select>
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          class="contactus"
+                          placeholder="Product Name"
+                          type="text"
+                          name="productname"
+                        />
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          class="contactus"
+                          placeholder="Price"
+                          type="text"
+                          name="price"
+                        />
+                      </div>
+                      <div class="col-md-12">
+                        <textarea
+                          class="textarea"
+                          placeholder="Description"
+                          type="text"
+                          name="description"
+                        ></textarea>
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="file" name="file" />
+                      </div>
+                      <div class="col-sm-12">
+                        <button class="send_btn">Add Product</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-5">
+                  <div class="mane_img h-100" style="height: 100%">
+                    <figure>
+                      <img
+                        style="height: 100%"
+                        src='{% static "images/contact-page.jpg" %}'
+                        alt="#"
+                      />
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock %}

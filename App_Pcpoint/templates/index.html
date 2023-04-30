@@ -1,0 +1,335 @@
+{% extends "header.html" %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PCPoint</title>
+    <style>
+      .about .about_box figure img {
+        border-radius: 5%;
+        width: 100%;
+      }
+      .black_bg {
+        background-color: #1c191a;
+      }
+      .testimonial_Carousel .test_box h3 {
+        color: #3051d3;
+      }
+
+      .testimonial_Carousel .carousel-indicators li {
+        background: #3051d3;
+      }
+
+      .two_box {
+        background: #3051d3;
+      }
+      .request .main_form .send_btn:hover {
+        background-color: #3051d3;
+      }
+      .best_box {
+        background-color: #3051d3;
+      }
+      .best .read_more:hover {
+        background-color: #3051d3;
+      }
+
+      .about .about_box .read_more:hover {
+        background: #3051d3;
+      }
+
+      .text-bg a:hover {
+        background-color: #3051d3;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      .text-bg span {
+        font-family: "Baloo Chettan", cursive;
+        color: #3051d3;
+        font-size: 40px;
+        line-height: 40px;
+        font-weight: bold;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        display: block;
+      }
+      .text-img {
+        background: linear-gradient(to bottom, #420aec 0%, #2b64cc 100%);
+      }
+      .text-img h3 {
+        border: #3051d3 solid 7px;
+      }
+      .text-bg span {
+        color: #3051d3;
+      }
+    </style>
+  </head>
+  <body class="main-layout">
+    <section class="banner_main">
+      <div class="container-fluid">
+        <div class="row d_flex">
+          <div class="col-md-5">
+            <div class="text-bg">
+              <h1>Computer and <br />laptop shop</h1>
+              <strong>Online PC Marketplace</strong>
+              <span>Free Shipping on All Orders</span>
+              <a href="/products">Buy Now</a>
+            </div>
+          </div>
+          <div class="col-md-7 padding_right1">
+            <div class="text-img">
+              <figure>
+                <img src='{% static "images/top_img.png" %}' alt="#" />
+              </figure>
+              <h3>01</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="about" class="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="titlepage">
+              <h2>About Pcoint</h2>
+              <span
+                >Welcome to PCPOINT, your one-stop-shop for all things tech!
+                Whether you're looking for a new laptop, a powerful gaming PC,
+                or just some cool accessories, we've got you covered. Our team
+                of experts is always on the cutting edge of technology, so you
+                can trust us to help you find the perfect device for your needs.
+                And with our easy-to-use website and fast, reliable shipping,
+                shopping with us is always a breeze. So why wait? Start
+                exploring our huge selection of products today and see what
+                PCPOINT can do for you!</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="about_box">
+              <figure>
+                <img src='{% static "images/about_img.webp" %}' alt="#" />
+              </figure>
+              <!--<a class="read_more" href="#">Read more</a>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="titlepage">
+              <h2>Testimonial</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div
+              id="myCarousel"
+              class="carousel slide testimonial_Carousel"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#myCarousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="container">
+                    <div class="carousel-caption">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="test_box">
+                            <h3>Mr. Anuj</h3>
+                            <p>
+                              I recently purchased a laptop from PCPOINT and I
+                              couldn't be happier with my experience. The
+                              website was easy to navigate and I found the
+                              perfect laptop for my needs. The checkout process
+                              was simple and straightforward, and my laptop
+                              arrived within a few days in perfect condition.
+                              The customer service team was also very helpful
+                              when I had a question about the warranty. I highly
+                              recommend PCPOINT for all your technology needs!"
+                              - John Doe, satisfied customer.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="container">
+                    <div class="carousel-caption">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="test_box">
+                            <h3>Mr. Jigar</h3>
+                            <p>
+                              I am so impressed with the service provided by
+                              PCPOINT. The team was incredibly knowledgeable and
+                              helpful in diagnosing and fixing the issue with my
+                              laptop. They provided excellent customer service
+                              and kept me informed every step of the way. I
+                              would highly recommend PCPOINT to anyone in need
+                              of computer repair services.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="container">
+                    <div class="carousel-caption">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="test_box">
+                            <h3>Mr. Kartik</h3>
+                            <p>
+                              I have been a loyal customer of PCPOINT for
+                              several years now, and I have always been
+                              impressed with their professionalism and
+                              expertise. They have helped me with a wide range
+                              of computer issues, from software upgrades to
+                              hardware repairs, and they have always provided
+                              prompt and reliable service. I would not trust
+                              anyone else with my computer needs.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#myCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#myCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="contact" class="request">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="titlepage">
+              <h2>Request a Call back</h2>
+              <span
+                >We'd love to hear from you! If you have any questions or
+                concerns regarding our products and services, please don't
+                hesitate to get in touch with us. Our team is available to
+                assist you in any way possible.</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="black_bg">
+              <div class="row">
+                <div class="col-md-7">
+                  <form
+                    class="main_form"
+                    action='{% url "contact" %}'
+                    method="post"
+                  >
+                    {% csrf_token %}
+					<h1 class="d-flex justify-content-center text-white fs-40">
+						Contact Us
+					  </h1>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <input
+                          class="contactus"
+                          placeholder="Name"
+                          type="text"
+                          value="{{request.session.name}}"
+                          name="name"
+                        />
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          class="contactus"
+                          placeholder="phonenumber"
+                          type="text"
+                          name="phonenumber"
+                        />
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          class="contactus"
+                          placeholder="Email"
+                          type="text"
+                          name="email"
+                          value="{{request.session.email}}"
+                        />
+                      </div>
+                      <div class="col-md-12">
+                        <textarea
+                          class="textarea"
+                          type="text"
+                          name="message"
+                        >
+                        </textarea>
+                      </div>
+                      <div class="col-sm-12">
+                        <button class="send_btn">Send</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-5">
+                  <div class="mane_img">
+                    <figure>
+                      <img
+                        src='{% static "images/contact-page.jpg" %}'
+                        alt="#"
+                      />
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock %}
