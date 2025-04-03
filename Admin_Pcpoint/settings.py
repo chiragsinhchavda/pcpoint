@@ -61,15 +61,16 @@ PAYTM_INDUSTRY_TYPE_ID = 'Retail'
 
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "chiragc612$pcpointdb",
-        "USER": "chiragc612",
-        "PASSWORD": "admin@123",
-        "HOST": "chiragc612.mysql.pythonanywhere-services.com",
-        "PORT": "3306",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'chiragc612$pcpointdb',  # Correct database name
+        'USER': 'chiragc612',  # Your PythonAnywhere username
+        'PASSWORD': 'admin@123',  # Your MySQL password
+        'HOST': 'chiragc612.mysql.pythonanywhere-services.com',  # PythonAnywhere MySQL host
+        'PORT': '3306',
     }
 }
+
 
 
 AUTH_PASSWORD_VALIDATORS = [
