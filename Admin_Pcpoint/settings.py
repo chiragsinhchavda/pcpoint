@@ -1,6 +1,9 @@
 
+import mysqlclient
 from pathlib import Path
 import os
+
+mysqlclient.install_as_MySQLdb()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -58,9 +61,13 @@ PAYTM_INDUSTRY_TYPE_ID = 'Retail'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "chiragc612$pcpointdb",
+        "USER": "chiragc612",
+        "PASSWORD": "admin@123",
+        "HOST": "chiragc612.mysql.pythonanywhere-services.com",
+        "PORT": "3306",
     }
 }
 
