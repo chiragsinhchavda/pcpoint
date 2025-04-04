@@ -1,22 +1,39 @@
-# Python
-*.pyc
-*~
-__pycache__
+# Byte-compiled / Python #
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Env
+# Virtual environment #
 .env
 myvenv/
 venv/
+env/
 
-# Database
-db.sqlite3
+# Django static and media files #
+static/
+media/
 
-# Static folder at project root
-/static/
+# Local development environment settings #
+.env
+*.sqlite3
 
-# macOS
-._*
+# Ignore secret keys or config files #
+config.json
+secrets.json
+
+# Ignore Django migrations cache #
+**/migrations/*.pyc
+**/migrations/*.py
+
+# Ignore IDE/editor files #
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore system files #
 .DS_Store
+Thumbs.db
 .fseventsd
 .Spotlight-V100
 

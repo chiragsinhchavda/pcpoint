@@ -5,10 +5,10 @@ import os
 
 pymysql.install_as_MySQLdb()
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent # base path of root folder
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = False
+SECRET_KEY = os.environ.get('SECRET_KEY','secretkey')
+DEBUG = True # Set True for development, for production set it to False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost']
 
@@ -71,6 +71,20 @@ DATABASES = {
     }
 }
 
+# for locals MySql DB
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # Using MySQL
+#         'NAME': 'pcpoint',  # Replace with your database name
+#         'USER': 'root',  # Default MySQL user in XAMPP
+#         'PASSWORD': '',  # XAMPP MySQL has no password by default (keep it empty)
+#         'HOST': '127.0.0.1',  # Or 'localhost'
+#         'PORT': '3306',  # Default MySQL port
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -97,9 +111,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL = '/static/'  # Keeps static URL prefix
+STATICFILES_DIRS = [  # Tells Django where to find static files for Development
+    BASE_DIR / 'App_Pcpoint\static',  # This should contain your CSS, JS, images, etc.
+]
+STATIC_ROOT = BASE_DIR / 'static'  # Used for production when collecting static files
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
