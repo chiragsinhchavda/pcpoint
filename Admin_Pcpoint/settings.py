@@ -113,7 +113,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'  # Keeps static URL prefix
 STATICFILES_DIRS = [  # Tells Django where to find static files for Development
-    BASE_DIR / 'App_Pcpoint\static',  # This should contain your CSS, JS, images, etc.
+    BASE_DIR / r'App_Pcpoint\static',  # This should contain your CSS, JS, images, etc.
 ]
 STATIC_ROOT = BASE_DIR / 'static'  # Used for production when collecting static files
 
@@ -129,4 +129,4 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-CSRF_TRUSTED_ORIGINS = ['.pythonanywhere.com']  # Replace with your domain
+CSRF_TRUSTED_ORIGINS = ['https://chiragc612.pythonanywhere.com']  # Replace with your domain
