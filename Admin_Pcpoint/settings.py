@@ -8,7 +8,7 @@ pymysql.install_as_MySQLdb()
 BASE_DIR = Path(__file__).resolve().parent.parent # base path of root folder
 
 SECRET_KEY = os.environ.get('SECRET_KEY','secretkey')
-DEBUG = True # Set True for development, for production set it to False
+DEBUG = False # Set True for development, for production set it to False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost']
 
@@ -128,3 +128,5 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+CSRF_TRUSTED_ORIGINS = ['.pythonanywhere.com']  # Replace with your domain
