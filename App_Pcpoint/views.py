@@ -198,7 +198,7 @@ def forgotPassword(request):
                 message = "Email Does Not Exist. Please Register Yourself."
                 return render(request, "forgotPassword.html", {'message': message})
         except:
-            message = "Email Does Not Exist. Please Register Yourself."
+            message = "Something went wrong!"
             return render(request, "forgotPassword.html", {'message': message})
     else:
         return render(request, "forgotPassword.html")
@@ -512,9 +512,9 @@ def initiate_payment(request):
     )
 
     paytm_params = dict(params)
-    checksum = generate_checksum(paytm_params, merchant_key)
+    # checksum = generate_checksum(paytm_params, merchant_key)
 
-    transaction.checksum = checksum
+    transaction.checksum = "checksum"
     transaction.save()
     carts = Carts.objects.filter(user=user)
     for i in carts:
@@ -522,9 +522,8 @@ def initiate_payment(request):
         i.save()
     carts = Carts.objects.filter(user=user, status=False)
     request.session['carts_count'] = len(carts)
-    paytm_params['CHECKSUMHASH'] = checksum
-    print('SENT: ', checksum)
-    return render(request, 'redirect.html', context=paytm_params)
+    paytm_params['CHECKSUMHASH'] = "checksum"
+    return render(request, 'myorders.html', context=paytm_params)
 
 
 @csrf_exempt

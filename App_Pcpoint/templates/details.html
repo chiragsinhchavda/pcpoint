@@ -51,7 +51,7 @@
 							{% if request.session.email %}
 							<a href="{% url 'addToWishlists' pk=product.pk %}"><input type="button" value="WISHLIST" class="btn btn-secondary"></a>
 							<a href="{% url 'addToCarts' pk=product.pk %}"><input type="button" value="CART" class="btn btn-secondary"></a>
-							<a href=""><input type="button" value="BUY" class="btn btn-dark"></a>
+							<a href="{% url 'addToCarts' pk=product.pk %}"><input type="button" value="BUY" class="btn btn-dark"></a>
 							{% else %}
 							<a href="{% url 'signIn' %}"><input type="button" value="Sign in" class="btn btn-info"></a>
 							{% endif %}
