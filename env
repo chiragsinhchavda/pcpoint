@@ -1,0 +1,3 @@
+EMAIL_HOST_PASSWORD='password'
+EMAIL_HOST_USER='emailAddress'
+PAYTM_SECRET_KEY=''
